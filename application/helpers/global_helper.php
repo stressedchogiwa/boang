@@ -36,7 +36,7 @@
 	if(!function_exists('getrow')) {
 		function getrow($table,$options = array(),$result = 'array'){
 			$ci =& get_instance();
-			return $ci->MY_Model->getRows($table,$options,$result);			
+			return $ci->MY_Model->getRows($table,$options,$result);
 		}
 	}
 
@@ -117,6 +117,21 @@
 		function fetch_method(){
 	        $ci =& get_instance();
 			return $ci->router->fetch_method();
+	    }
+	}
+
+	if(!function_exists('__load_assets__')) {
+		function __load_assets__($assets,$type){
+	        $ci =& get_instance();
+			echo "\r\n";
+			foreach ($assets[$ci->router->fetch_class()][$type] as $key => $value) {
+				if($type == 'css'){
+					echo "<link rel='stylesheet' href='". base_url('assets/modules/' . $ci->router->fetch_class() . '/'.$type.'/') . $value . "' />";
+				} else {
+					echo "<script type='text/javascript' src='" . base_url('assets/modules/' . $ci->router->fetch_class() . '/' . $type . '/') . $value . "' ></script>";
+				}
+				echo "\r\n";
+			}
 	    }
 	}
 ?>

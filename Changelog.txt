@@ -24,3 +24,13 @@ Author: Eduardo T. Morales
 - Added new options instead of only using $this->MY_Model->getRows() you can now use getrow() function with the same parameters to be passed, same as insert, delete, update, datatables
 - Auto detect base url
 
+
+January 28,2022
+Author: Loyd - PRD1091
+- added global base_url on root index.php
+- added isProduction on root index.php
+    - set to true if in Production to hide errors/warnings
+- added load assets helper
+    - added to MY_Controller
+    - added to views/includes header and footer for loading assets
+- added DOMPDF library

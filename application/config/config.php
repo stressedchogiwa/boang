@@ -26,7 +26,8 @@ $config['modules_locations'] = array(
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+global $base_url;
+$config['base_url'] = $base_url;
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -326,7 +327,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'Tm7lKYE3F1byzKSsm5Q31NLhdB80Hqke';
 
 /*
 |--------------------------------------------------------------------------

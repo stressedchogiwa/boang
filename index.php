@@ -1,4 +1,8 @@
 <?php
+date_default_timezone_set("Asia/Manila");
+$isProduction = false;
+$base_url = (isset($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].'/'.(explode("/",$_SERVER['REQUEST_URI'])[1]).'/';
+
 /**
  * CodeIgniter
  *
@@ -53,7 +57,8 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : ($isProduction == true) ? 'production' : 'development');
 
 /*
  *---------------------------------------------------------------
