@@ -5,8 +5,8 @@ class MY_Controller extends MX_Controller {
 
 	public $assets_ = array(
 		'sample' => array(
-			'css' => array('sampe.css'),
-			'js' => array('sample.js'),
+			'css' => array(),
+			'js' => array(),
 		)
 	);
 
@@ -24,6 +24,7 @@ class MY_Controller extends MX_Controller {
 	}
 
 	public function load_page($page, $data = array()){
+		$data['__assets__'] = $this->assets_;
       	$this->load->view('includes/head',$data);
       	$this->load->view($page,$data);
       	$this->load->view('includes/footer',$data);
@@ -33,14 +34,14 @@ class MY_Controller extends MX_Controller {
 		$data['isCIPage'] = true;
 		$data['base_url'] = base_url();
 		$this->load->view('../../../wp-load.php');
-		$this->load->view('../../../wp-content/themes/firstaidpros/includes/head',$data);
-		$this->load->view('../../../wp-content/themes/firstaidpros/includes/header');
-		$this->load->view('../../../wp-content/themes/firstaidpros/includes/nav');
-		$this->load->view('../../../wp-content/themes/firstaidpros/includes/banner',$data);
+		$this->load->view('../../../wp-content/themes/themefolder/includes/head',$data);
+		$this->load->view('../../../wp-content/themes/themefolder/includes/header');
+		$this->load->view('../../../wp-content/themes/themefolder/includes/nav');
+		$this->load->view('../../../wp-content/themes/themefolder/includes/banner',$data);
 		$this->load->view('includes/wp-head',$data);
 		$this->load->view($page,$data);
 		$this->load->view('includes/wp-footer',$data);
-		$this->load->view('../../../wp-content/themes/firstaidpros/includes/footer',$data);
+		$this->load->view('../../../wp-content/themes/themefolder/includes/footer',$data);
 	}
 
 	public function get_profile(){
