@@ -44,16 +44,6 @@ class MY_Controller extends MX_Controller {
 		$this->load->view('../../../wp-content/themes/themefolder/includes/footer',$data);
 	}
 
-	public function get_profile(){
-		$data = array(
-			'select' => 'firstname,lastname,email_address',
-			'join'   => array('sat_users as user' => 'user.fk_user_id = details.user_id'),
-			'where'	 => array('user_id' => $_SESSION['userid'])
-		);
-		$query = $this->MY_Model->getRows('sat_usermeta as details',$data,'row');
-		return $query;
-	}
-
 	protected function generate_num($strength = 4) {
         $permitted_chars = '0123456789';
         $input_length = strlen($permitted_chars);
@@ -74,33 +64,6 @@ class MY_Controller extends MX_Controller {
             $random_string .= $random_character;
         }
         return strtolower($random_string);
-	}
-
-	public function exist_email_address($email=''){
-		$isexist = false;
-		$users_email = $this->MY_Model->getRows('ecl_users',array('select'=>"email_address",'where'=>array('email_address'=>$email)));
-		if ($users_email) {
-			$isexist = true;
-		}
-		return $isexist;
-	}
-
-	public function exist_username($uname=''){
-		$isexist = false;
-		$users_uname = $this->MY_Model->getRows('ecl_users',array('select'=>"username",'where'=>array('username'=>$uname)));
-		if ($users_uname) {
-			$isexist = true;
-		}
-		return $isexist;
-	}
-
-	public function exist_code($code=''){
-		$isexist = false;
-		$iscode = $this->MY_Model->getRows('ecl_discounts',array('select'=>"code",'where'=>array('code'=>$code)));
-		if ($iscode) {
-			$isexist = true;
-		}
-		return $isexist;
 	}
 
 	public function set_rules_from_post($data, $unrequired_fields=array()){
