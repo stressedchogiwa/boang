@@ -34,3 +34,8 @@ Author: Loyd - PRD1091
     - added to MY_Controller
     - added to views/includes header and footer for loading assets
 - added DOMPDF library
+
+
+July 18, 2022
+Author: Loyd - PRD1091
+- Revised Root Index IsProduction Condition for Future PHP Version Compatability
