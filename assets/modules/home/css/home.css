@@ -1,0 +1,15 @@
+.card-header{
+    border: none;
+}
+.btn-primary{
+    border: none;
+}
+.btn-login, .btn-register{
+    background-color: #03c2a4;
+}
+.btn-login:hover, .btn-register:hover{
+    background-color: #0caa91;
+}
+.btn-register{
+    border-radius: 50px;
+}

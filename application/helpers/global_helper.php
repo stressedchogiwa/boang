@@ -70,12 +70,82 @@
 	    }
 	}
 
-	if(!function_exists('delete')) {
-		function delete($table,$where){
+	if(!function_exists('delete_')) {
+		function delete_($table,$where){
 			$ci =& get_instance();
 	        $ci->MY_Model->delete($table,$where);
 	        return true;
 	    }
+	}
+
+	/**********added functions***********/
+	//get user details
+	if(!function_exists('user')) {
+		function user(){
+			if(isset($_SESSION['user_id'])){
+				$options['select'] = '*';
+				$options['where'] = array ('user_id' => $_SESSION['user_id']);
+
+				$ci =& get_instance();
+				return $ci->MY_Model->getRows('tbl_users', $options, 'row');
+			}
+		}
+	}
+	//get user id
+	if(!function_exists('id')) {
+		function id(){
+			$name = '';
+			if(isset($_SESSION['org_id'])){
+				$name = $_SESSION['org_id'];
+			}else if(isset($_SESSION['user_id'])){
+				$name = $_SESSION['user_id'];
+			}else{
+				$name = 'Login Required';
+			}
+			$ci =& get_instance();
+			return $name;
+		}
+	}
+
+	// select all from table
+	if(!function_exists('get_all')) {
+		function get_all($table, $order = ''){
+				$options['select'] = '*';
+				$options['order'] = $order;
+
+				$ci =& get_instance();
+				return $ci->MY_Model->getRows($table, $options);
+		}
+	}
+	// select all from table with similar data
+	if(!function_exists('get_where')) {
+		function get_where($table, $options = array(), $order = ''){
+				$params['select'] = '*';
+				$params['where'] = $options;
+				$params['order'] = $order;
+				$ci =& get_instance();
+				return $ci->MY_Model->getRows($table, $params);
+		}
+	}
+	// select specific column from table
+	if(!function_exists('select')) {
+		function select($table, $options = array()){
+				$params['select'] = '*';
+				$params['where'] = $options;
+
+				$ci =& get_instance();
+				return $ci->MY_Model->getRows($table, $params, 'row');
+		}
+	}
+
+	if(!function_exists('count_')) {
+		function count_($table, $options = array()){
+				$params['select'] = '*';
+				$params['where'] = $options;
+
+				$ci =& get_instance();
+				return $ci->MY_Model->getRows($table, $params, 'count');
+		}
 	}
 
 	//End of Query Builder

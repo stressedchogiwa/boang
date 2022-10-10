@@ -4,10 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends MX_Controller {
 
 	public $assets_ = array(
-		'sample' => array(
-			'css' => array(),
-			'js' => array(),
-		)
+		'home' => array(
+			'css' => array('home.css'),
+			'js' => array('home.js'),
+		),
+		'dashboard' => array(
+			'css' => array('dashboard.css'),
+			'js' => array('dashboard.js'),
+		),
+		'materials' => array(
+			'css' => array('materials.css'),
+			'js' => array('materials.js'),
+		),
 	);
 
 	public function __construct(){
@@ -26,6 +34,24 @@ class MY_Controller extends MX_Controller {
 	public function load_page($page, $data = array()){
 		$data['__assets__'] = $this->assets_;
       	$this->load->view('includes/head',$data);
+      	$this->load->view($page,$data);
+      	$this->load->view('includes/footer',$data);
+    }
+
+	public function load_page_admin($page, $data = array()){
+		$data['__assets__'] = $this->assets_;
+		$this->load->view('includes/head',$data);
+      	$this->load->view('includes/navbar',$data);
+      	$this->load->view('includes/modals',$data);
+      	$this->load->view($page,$data);
+      	$this->load->view('includes/footer',$data);
+    }
+
+	public function load_page_user($page, $data = array()){
+		$data['__assets__'] = $this->assets_;
+		$this->load->view('includes/head',$data);
+      	$this->load->view('includes/navbar_user',$data);
+      	$this->load->view('includes/modals',$data);
       	$this->load->view($page,$data);
       	$this->load->view('includes/footer',$data);
     }
