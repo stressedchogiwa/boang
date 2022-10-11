@@ -23,17 +23,33 @@
         <div class="card-header">
           <h3 class="card-title">Title</h3>
 
-          <!-- <div class="card-tools">
+          <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+            <!-- <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
               <i class="fas fa-times"></i>
-            </button>
-          </div> -->
+            </button> -->
+          </div>
         </div>
         <div class="card-body">
-            <p>Insert datatable here</p>
+                <table id="myTable" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>Job Discipline</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                  </tr>
+                  </thead>
+
+                  <tfoot>
+                  </tfoot>
+                </table>
         </div>
         <!-- /.card-body -->
 
