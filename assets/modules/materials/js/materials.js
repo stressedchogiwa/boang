@@ -45,7 +45,7 @@ $(document).ready(function(){
         "width": "5%",
         "render": function(data, type, row, meta){
           var str = ''
-          str += `<a class="btn btn-sm btn-primary" id="add_materials_btn"><i class="fas fa-download"></i></a>`;
+          str += `<a href="${base_url+'materials/downloadMaterial/'+row.file_name}" target="_blank"  class="btn btn-sm btn-primary" id="add_materials_btn"><i class="fas fa-download"></i></a>`;
           return str
         }
       },

@@ -10,7 +10,7 @@ class Materials extends MY_Controller{
         $message = '';
         $status = null;
 
-        $config['allowed_types'] = 'pdf';
+        $config['allowed_types'] = 'jpg|png|jpeg|gif|doc|docx|csv|pptx|xls|pdf';
         $config['upload_path'] = './assets/uploads/materials/';
 
         $this->load->library('upload', $config);
@@ -64,6 +64,17 @@ class Materials extends MY_Controller{
             "data" => $new_array,
         );
         json($output);
+    }
+
+    public function downloadMaterial($id){
+        $this->load->helper('download');
+
+        $base = base_url().'/assets/uploads/materials/'.$id;
+        $data = file_get_contents($base); // Read the file's contents
+        $name = $id;
+        
+        force_download($name, $data);
+
     }
 
 

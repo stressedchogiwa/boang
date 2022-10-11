@@ -66,9 +66,9 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?php echo base_url('files_admin'); ?>" class="nav-link ">
+                  <a href="<?php echo base_url('materials'); ?>" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>File Manager</p>
+                    <p>Materials</p>
                   </a>
                 </li>
                 <li class="nav-item">
